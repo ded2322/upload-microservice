@@ -1,0 +1,33 @@
+version: "3.8"
+
+volumes:
+
+  core-static:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: './core/static/'
+
+services:
+  db:
+    image: postgres:16
+    container_name: "video_db"
+    env_file:
+      - .env
+    ports:
+      - 5432:5432
+
+  video_service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    depends_on:
+      - db
+    command: sh -c "alembic upgrade head && uvicorn core.main:app --host 0.0.0.0 --port 8001"
+    ports:
+      - "8001:8001"
+    volumes:
+      - core-static:/core/static/
