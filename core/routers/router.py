@@ -6,12 +6,12 @@ from core.utils.video_utils import Utils, S3
 from core.logs.logs import logger_response
 
 router = APIRouter(
-    prefix="/upload-service",
-    tags=["routers"],
+    prefix="/upload-microservice",
+    tags=["Upload microservice"],
 )
 
 
-@router.post("/upload-video", status_code=201,summary="Upload a video-file" )
+@router.post("/upload-video", status_code=201, summary="Upload a video-file")
 async def upload_video_file(background_tasks: BackgroundTasks,
                             title: str = Form(...), username: str = Form(...),
                             file: UploadFile = File(...)):
