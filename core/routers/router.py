@@ -11,7 +11,7 @@ router = APIRouter(
 )
 
 
-@router.post("/", status_code=201,summary="Upload a video-file" )
+@router.post("/upload-video", status_code=201,summary="Upload a video-file" )
 async def upload_video_file(background_tasks: BackgroundTasks,
                             title: str = Form(...), username: str = Form(...),
                             file: UploadFile = File(...)):
