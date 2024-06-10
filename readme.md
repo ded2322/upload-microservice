@@ -12,6 +12,7 @@
 - Удаление видео из базы данных и s3 хранилище
 
 Остальные микросервисы:
+- API-gateway: https://github.com/ded2322/api-gateway.git
 - Микросервис отвечающий за регистрацию пользователей: https://github.com/ded2322/auth-microservice.git
 - Микросервис отвечающий за загрузку видео: [Текущий репозиторий]
 - Микросервис отвечающий за показ видео: https://github.com/ded2322/streaming-microservice.git
